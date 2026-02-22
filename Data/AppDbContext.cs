@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BizSecureDemo22180085.Models;
-namespace BizSecureDemo22180085.Data
+using BizSecureDemo22180075.Models;
+namespace BizSecureDemo22180075.Data
 
 {
     public class AppDbContext:DbContext

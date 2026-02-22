@@ -1,10 +1,10 @@
 ﻿using System.Security.Claims;
-using BizSecureDemo22180085.Data;
+using BizSecureDemo22180075.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BizSecureDemo22180085.Controllers;
+namespace BizSecureDemo22180075.Controllers;
 
 [Authorize]
 public class HomeController : Controller
@@ -14,18 +14,18 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
 {
-    var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!); //Взима ID-то на логнатия потребител
+    var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!); //Взима ID-то на влезналият потребител
 
     var myOrders = await _db.Orders
         .Where(o => o.UserId == uid)
         .OrderByDescending(o => o.Id)
-        .ToListAsync(); // Чете поръчките от базата спрямо логнатия потребител
+        .ToListAsync(); // Чете поръчките от базата спрямо влезналия потребител
 
     var allOrders = await _db.Orders
         .OrderByDescending(o => o.Id)
         .ToListAsync(); // Чете всички поръчки от базата
 
-    ViewBag.AllOrders = allOrders; //Подава всички поръчки към View-то през ViewBag. ViewBag е „чанта“ за допълнителни данни към View-то. Така View-то може да показва и публичен списък от поръчки.
+    ViewBag.AllOrders = allOrders; //ViewBag е просто една „папка“, в която слагаш данни, за да ги пренесеш от програмния код към екрана.
     return View(myOrders); }
 
 }

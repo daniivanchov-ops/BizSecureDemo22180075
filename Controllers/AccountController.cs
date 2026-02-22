@@ -1,22 +1,18 @@
 ﻿using System.Security.Claims;
-using BizSecureDemo22180085.Data;
-using BizSecureDemo22180085.Models;
-using BizSecureDemo22180085.ViewModels;
-using BizSecureDemo22180085.Data;
-using BizSecureDemo22180085.Models;
-using BizSecureDemo22180085.ViewModels;
+using BizSecureDemo22180075.Data;
+using BizSecureDemo22180075.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BizSecureDemo22180085.Controllers;
+namespace BizSecureDemo22180075.Controllers;
 
 public class AccountController : Controller
 {
     private readonly AppDbContext _db;
-    private readonly PasswordHasher<AppUser> _hasher;
+    private readonly PasswordHasher<Models.AppUser> _hasher;
 
     public AccountController(AppDbContext db, PasswordHasher<AppUser> hasher)
     {
@@ -25,17 +21,17 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Register() => View(new RegisterVm());
+    public IActionResult Register() => View(new ViewModels.RegisterVm());
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterVm vm)
+    public async Task<IActionResult> Register(ViewModels.RegisterVm vm)
     {
         if (!ModelState.IsValid) return View(vm);
         var email = vm.Email.Trim().ToLowerInvariant();
         if (await _db.Users.AnyAsync(u => u.Email == email))
         {
-            ModelState.AddModelError("", "Този email вече е регистриран.");
+            ModelState.AddModelError("", " emaila  не е регистриран.");
             return View(vm);
         }
 
@@ -49,11 +45,11 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login() => View(new LoginVm());
+    public IActionResult Login() => View(new ViewModels.LoginVm());
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginVm vm)
+    public async Task<IActionResult> Login(ViewModels.LoginVm vm)
     {
         if (!ModelState.IsValid) return View(vm);
 

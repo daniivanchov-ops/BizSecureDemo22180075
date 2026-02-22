@@ -1,4 +1,4 @@
-namespace BizSecureDemo22180085.Models
+namespace BizSecureDemo22180075.Models
 {
     public class ErrorViewModel
     {

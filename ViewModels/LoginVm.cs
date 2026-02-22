@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BizSecureDemo22180085.ViewModels
+namespace BizSecureDemo22180075.ViewModels
 {
     public class LoginVm
     {

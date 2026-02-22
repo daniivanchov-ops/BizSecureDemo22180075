@@ -1,4 +1,4 @@
-﻿@model List<BizSecureDemo22180085.Models.Order>
+﻿@model List<BizSecureDemo22180075.Models.Order>
 @{
     ViewData["Title"] = "Landing";
 }
@@ -29,7 +29,7 @@
         <div class="card p-3 shadow-sm mt-3">
             <h5>Публични поръчки (демо)</h5>
             @{
-                var allOrders = ViewBag.AllOrders as List<BizSecureDemo22180085.Models.Order>; //обърнете внимание, че тук трябва да добавите Вашият факултетен номер или както се казва Вашият проект
+                var allOrders = ViewBag.AllOrders as List<BizSecureDemo22180075.Models.Order>; // тук трябва да добавите Вашият факултетен номер или по-точно Вашият проект
             }
             @if (allOrders == null || !allOrders.Any())
             {
