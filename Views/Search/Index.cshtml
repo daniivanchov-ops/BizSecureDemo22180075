@@ -1,0 +1,13 @@
+﻿@model List<BizSecureDemo22180075.Models.Order>
+@{
+    ViewData["Title"] = "Landing";
+}
+
+<form method="post" asp-action="Results">
+ <div class="mb-2">
+ <label>Search orders</label>
+ <input class="form-control" name="keyword"/>
+ </div>
+ <button class="btn btn-primary">Search</button>
+</form>
+
