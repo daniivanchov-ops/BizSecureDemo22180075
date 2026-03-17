@@ -1,0 +1,15 @@
+﻿@if (User.Identity?.IsAuthenticated ?? false)
+{
+         <a class="btn btn-outline-light btn-sm" asp-controller="Home" asp-action="Index">Landing</a>
+
+         <a class="btn btn-outline-light btn-sm"
+            asp-controller="ReplayDemo"
+            asp-action="Index">
+             Replay Attack Demo
+         </a>
+
+         <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+        @Html.AntiForgeryToken()
+             <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+         </form>
+}
